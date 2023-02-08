@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Button, Form, FormFeedback, FormGroup, Input, Label } from "reactstrap";
 import axios from "axios";
-import userServices from "../services/userServices";
 import { useNavigate } from "react-router-dom";
+import userServices from "../services/userServices";
 
 function Login() {
 
@@ -19,7 +19,7 @@ function Login() {
         userServices.login({ username, password })
             .then((res) => {
                 console.log(res.data);
-                navigate('/books')
+                navigate('/chat')
                 window.localStorage.setItem("token", res.data.token);
                 window.alert(res.data.status);
             }).catch((err) => window.alert(err.response.data.err));

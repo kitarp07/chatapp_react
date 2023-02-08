@@ -2,9 +2,13 @@ import axios from 'axios';
 import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { Button, Form, FormFeedback, FormGroup, Input, Label } from "reactstrap";
+import userServices from '../services/userServices';
 
 
 const Register = () => {
+
+    const [fname, setfName] = useState('')
+    const [lname, setlName] = useState('')
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
@@ -20,12 +24,13 @@ const Register = () => {
     const handleRegister = (e) => {
         e.preventDefault()
         console.log(username, password, confirmpassword)
-        axios.post('http://localhost:3000/user/register', { username, password })
-            .then(response => {
-                console.log(response.data)
-                navigate('/login')
-            })
-            .catch(err => (console.log(err)))
+
+        userServices.register({ fname, lname, username, password }).then(res => {
+            console.log(res.data)
+            navigate('/login')
+
+        })
+            .catch(err => console.log(err))
 
     }
 
@@ -78,6 +83,44 @@ const Register = () => {
             <p> Registration form</p>
 
             <Form>
+                <FormGroup>
+                    <Label for="fname">
+                        First Name
+                    </Label>
+                    <Input className={lengthValid}
+                        id="fname"
+                        name="fname"
+                        placeholder="Enter first name"
+                        type="text"
+                        onChange={(e) => setfName(e.target.value)}
+                    />
+
+                    <FormFeedback>
+                        {
+                            lengthMessage
+
+                        }
+                    </FormFeedback>
+                </FormGroup>
+                <FormGroup>
+                    <Label for="lname">
+                        Last name
+                    </Label>
+                    <Input className={lengthValid}
+                        id="lname"
+                        name="lname"
+                        placeholder="Enter last name"
+                        type="text"
+                        onChange={(e) => setlName(e.target.value)}
+                    />
+
+                    <FormFeedback>
+                        {
+                            lengthMessage
+
+                        }
+                    </FormFeedback>
+                </FormGroup>
                 <FormGroup>
                     <Label for="username">
                         Username
