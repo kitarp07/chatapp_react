@@ -10,4 +10,10 @@ const register = (data) => {
     return(axios.post(`${baseUrl}/register`, data))
 }
 
-export default {login, register};
+function getUser (id) {
+    return axios.get(`${baseUrl}/${id}`)
+
+
+}
+
+export default {login, register, getUser};
