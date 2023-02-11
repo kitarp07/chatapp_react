@@ -24,13 +24,10 @@ function Login({user, setUser}) {
                 
                 window.localStorage.setItem("token", res.data.token);
                 setUser(res.data.user)
-                navigate(`/chat/${user._id}`)
-                
+                console.log(user._id)
+                navigate('/chats')
                 
             
-               
-              
-                window.alert(res.data.status);
             }).catch((err) => window.alert(err.response.data.err));
 
     };

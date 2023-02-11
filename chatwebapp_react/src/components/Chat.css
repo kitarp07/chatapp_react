@@ -1,0 +1,14 @@
+.wrap{
+    display: flex;
+    flex-direction: row;
+
+
+}
+
+.convoWrap{
+    flex:1;
+}
+
+.messagesWrap{
+    flex: 1;
+}

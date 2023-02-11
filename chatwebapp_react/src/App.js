@@ -12,10 +12,12 @@ import userServices from './services/userServices';
 function App() {
 
   const [user, setUser] = useState([])
-  
- 
-  
-  
+
+  const [conversation, setConversation] = useState([])
+
+
+
+
 
 
   return (
@@ -26,7 +28,7 @@ function App() {
           <Link to={'/login'}> Login </Link>
           <Link to={'/register'}> register </Link>
           <Link to={'/home'}>Home</Link>
-          <Link to={'/chat/'}>Chat</Link>
+          {/* <Link to={'/chat/'}>Chat</Link> */}
           {/* <Link to={'/books'}>Books</Link> */}
 
 
@@ -37,8 +39,8 @@ function App() {
           <Route path='/login' element={<Login user={user} setUser={setUser} />} />
           <Route path='/register' element={<Register />} />
           <Route path='/home' element={<Home />} />
-          <Route path='/chat' element={<Chat />} />
-          <Route path='/chat/:id' element={<Chat user={user} />} />
+          {/* <Route path='/chat' element={<Chat />} /> */}
+          <Route path='/chats' element={<Chat user={user} conversation={conversation} setConversation={setConversation} />} />
 
 
         </Routes>

@@ -1,9 +1,11 @@
 import "./Message.css"
-function Message ({sent}) {
+function Message ({message, sent}) {
+
+
 
     return(
         <div className={sent ? "message sent" : "message"}>
-            <p>Hello </p>
+            <p>{message.message}</p>
         </div>
 
     )
