@@ -16,8 +16,8 @@ function Chat({ user, conversation, setConversation }) {
             chatServices.getConversation(user._id)
                 .then(res => {
                     console.log(res)
-                    console.log(res.data)
-                    setConversation(res.data)
+                    console.log(res.data.data)
+                    setConversation(res.data.data)
                     setIsChat(true)
                     console.log(conversation)
 
@@ -31,85 +31,96 @@ function Chat({ user, conversation, setConversation }) {
 
     useEffect(
         () => {
+            console.log(currentChat)
             chatServices.getMessagesByChatId(currentChat._id)
                 .then(res => {
+                    console.log(res)
                     setMessages(res.data)
                     console.log(messages)
                 })
         }, [currentChat]
-    )
+    );
 
-    console.log(currentChat._id)
-
-    console.log(isChat)
     return (
-        <div>
+        <div className="main">
             <p > {user.fname}'s chat box</p>
 
             <div className="wrap">
-                <div className="convoWrap">
+                <div className="convos">
+                    menu
+                    <input placeholder="Search.." className="searchInput" />
+                    <Conversation/>
+                    <Conversation/>
+                    <Conversation/>
+                    <Conversation/>
+                    <Conversation/>
 
-                    {conversation.map((c) => (
+
+
+
+
+                    {/* {conversation.map((c) => (
                         <div onClick={() => setCurrentChat(c)}>
+
                             <Conversation conversation={c} currentUser={user} />
                         </div>
 
-                    ))}
-
-
-
+                    ))} */}
                 </div>
-                <div className="messagesWrap">
-
-                    {
-                        isChat ? <div>
-                            {messages.map((m) => (
-                                <div>
-                                    <Message message={m} sent={m.sender === user._id} />
-                                </div>
-
-
-                            ))}
-                            
-
-                        </div>
-                            : <p>No message</p>
-                    }
+            </div>
+            <div className="messagesWrap">
+                <div className="messages">
+                    messages
+                    <Message/>
+                    <Message sent={true}/>
+                    {/* {
+                    isChat ? <div>
+                        {messages.map((m) => (
+                            <div>
+                                <Message message={m} sent={m.sender === user._id} />
+                            </div>
 
 
+                        ))}
 
 
+                    </div>
+                        : <p>No message</p>
+                }
+                <Form>
+                    <FormGroup>
+                        <Label for="message">
+                            Send Message
+                        </Label>
+                        <Input
+                            id="message"
+                            name="message"
+                            placeholder="Type something"
+                            type="message"
+                            value={messages}
+                            onChange={(e) => setMessages(e.target.value)}
+                        />
 
 
-
-                    <Form>
-                        <FormGroup>
-                            <Label for="message">
-                                Send Message
-                            </Label>
-                            <Input
-                                id="message"
-                                name="message"
-                                placeholder="Type something"
-                                type="message"
-                                value={messages}
-                                onChange={(e) => setMessages(e.target.value)}
-                            />
-
-
-                        </FormGroup>
+                    </FormGroup>
 
 
 
 
 
-                        <Button color="primary">
-                            Send
+                    <Button color="primary">
+                        Send
 
-                        </Button>
-                    </Form>
+                    </Button>
+                </Form> */}
                 </div>
-
+                <div className="addMessage">
+                    <textarea className="sendMessage" placeholder="Send a message"> </textarea>
+                    <button className="msgSubmit">Submit</button>
+                </div>
+            </div>
+            <div className="profileWrap">
+                <div className="profile">profile</div>
 
             </div>
 

@@ -1,14 +1,36 @@
-.wrap{
+.main{
+    height: 90vh;
     display: flex;
-    flex-direction: row;
-
-
 }
 
-.convoWrap{
-    flex:1;
+.wrap{
+    flex: 3
+    
+
 }
 
 .messagesWrap{
-    flex: 1;
+    flex:6;
+}
+
+.profileWrap{
+    flex: 3;
+}
+
+.convos, .messages,.profile{
+    padding: 10px;
+  
+    height: 100%;
+}
+
+.searchInput {
+    width: 90%;
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid indigo;
+}
+
+.addMessage{
+    margin-top: 5px;
+    display: flex;
 }
