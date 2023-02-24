@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Link, Route, Routes, useMatch } from 'react-ro
 import Chat from './components/Chat';
 import { useState } from 'react';
 import userServices from './services/userServices';
+import Navbar from './components/Navbar';
 
 function App() {
 
@@ -21,13 +22,13 @@ function App() {
 
 
   return (
-    <div className='container' >
-      <h1>Chat App</h1>
+    <div  >
+      <Navbar />
       <Router>
         <div>
-          <Link to={'/login'}> Login </Link>
+          {/* <Link to={'/login'}> Login </Link>
           <Link to={'/register'}> register </Link>
-          <Link to={'/home'}>Home</Link>
+          <Link to={'/home'}>Home</Link> */}
           {/* <Link to={'/chat/'}>Chat</Link> */}
           {/* <Link to={'/books'}>Books</Link> */}
 

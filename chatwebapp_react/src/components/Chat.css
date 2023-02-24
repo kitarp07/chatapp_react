@@ -4,22 +4,64 @@
 }
 
 .wrap{
-    flex: 3
-    
-
+    flex:3;
+    display: flex;
+    flex-direction: column;
+}
+.convos{
+    overflow-y: scroll;
+    height: 100%;
 }
 
 .messagesWrap{
     flex:6;
 }
 
+.messagesArea{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    
+
+}
+
+.messages{
+    height: 100%;
+    overflow-y: scroll;
+    padding-right: 10px;
+    
+
+}
+.addMessage{
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+   
+}
+
+.sendMessage{
+    width: 80%;
+    height: 90px;
+    padding: 10px;
+}
+
+.msgSubmit{
+    width: 70px;
+    height:40px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;background-color: red;
+    color: white;
+}
+
 .profileWrap{
     flex: 3;
 }
 
-.convos, .messages,.profile{
+.convos,.messagesArea,.profile{
     padding: 10px;
-  
     height: 100%;
 }
 
@@ -30,7 +72,13 @@
     border-bottom: 1px solid indigo;
 }
 
-.addMessage{
-    margin-top: 5px;
-    display: flex;
+.noMsgTxt{
+    position: absolute;
+    top: 10%;
+    font-size: 20px;
+    color: grey;
+    text-align: center;
+    cursor: default;
+
 }
+
