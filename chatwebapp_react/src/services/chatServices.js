@@ -17,8 +17,13 @@ function getMessagesByChatId(chatId) {
     return axios.get(`${messageUrl}/${chatId}`)
 }
 
+function createChat(data){
+    return axios.post(`${baseUrl}/`, data)
+
+}
+
 function addMessage(data){
     return axios.post(`${messageUrl}`, data)
 }
 
-export default {getConversation, getMessagesByChatId, addMessage};
+export default {getConversation, getMessagesByChatId, addMessage, createChat};

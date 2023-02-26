@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { Button, Form, FormFeedback, FormGroup, Input, Label } from "reactstrap";
 import userServices from '../services/userServices';
-
+import "./Registration.css"
 
 const Register = () => {
 
@@ -79,12 +79,12 @@ const Register = () => {
 
 
     return (
-        <>
-            <p> Registration form</p>
+        <><div className='r-container'>
+            <span className='title'> Register</span>
 
             <Form>
                 <FormGroup>
-                    <Label for="fname">
+                    <Label className='username' for="fname">
                         First Name
                     </Label>
                     <Input className={lengthValid}
@@ -95,7 +95,7 @@ const Register = () => {
                         onChange={(e) => setfName(e.target.value)}
                     />
 
-                    <FormFeedback>
+                    <FormFeedback id='error'>
                         {
                             lengthMessage
 
@@ -103,7 +103,7 @@ const Register = () => {
                     </FormFeedback>
                 </FormGroup>
                 <FormGroup>
-                    <Label for="lname">
+                    <Label className='password'for="lname">
                         Last name
                     </Label>
                     <Input className={lengthValid}
@@ -114,7 +114,7 @@ const Register = () => {
                         onChange={(e) => setlName(e.target.value)}
                     />
 
-                    <FormFeedback>
+                    <FormFeedback id='error'>
                         {
                             lengthMessage
 
@@ -122,7 +122,7 @@ const Register = () => {
                     </FormFeedback>
                 </FormGroup>
                 <FormGroup>
-                    <Label for="username">
+                    <Label className='password'for="username">
                         Username
                     </Label>
                     <Input className={lengthValid}
@@ -133,7 +133,7 @@ const Register = () => {
                         onChange={(e) => setUsername(e.target.value)}
                     />
 
-                    <FormFeedback>
+                    <FormFeedback id='error'>
                         {
                             lengthMessage
 
@@ -143,7 +143,7 @@ const Register = () => {
 
 
                 <FormGroup>
-                    <Label for="password">
+                    <Label className='password'for="password">
                         Password
                     </Label>
                     <Input
@@ -158,7 +158,7 @@ const Register = () => {
                 </FormGroup>
 
                 <FormGroup>
-                    <Label for="confirm password">
+                    <Label className='password'for="confirm password">
                         Confirm Password
                     </Label>
                     <Input className={valid}
@@ -169,18 +169,29 @@ const Register = () => {
                         onChange={(e) => setConfirmPassword(e.target.value)}
                     />
 
-                    <FormFeedback >
+                    <FormFeedback id='error'>
 
                         {message}
 
                     </FormFeedback>
                 </FormGroup>
-                <Button color="primary" onClick={handleRegister} >
+                <div className='buttons'>
+                <Button className='button' color="primary"  >
+                    Cancel
+
+                </Button>
+                <Button className='button' color="secondary" onClick={handleRegister} >
                     Register
 
                 </Button>
 
+                
+
+                </div>
+                
+
             </Form>
+        </div>
 
         </>
     )

@@ -6,6 +6,7 @@ import Home from './components/Home';
 import Register from './components/Register';
 import { BrowserRouter as Router, Link, Route, Routes, useMatch } from 'react-router-dom';
 import Chat from './components/Chat';
+import Account from './components/Account'
 import { useState } from 'react';
 import userServices from './services/userServices';
 import Navbar from './components/Navbar';
@@ -25,7 +26,7 @@ function App() {
     <div  >
       <Navbar />
       <Router>
-        <div>
+        <div >
           {/* <Link to={'/login'}> Login </Link>
           <Link to={'/register'}> register </Link>
           <Link to={'/home'}>Home</Link> */}
@@ -42,6 +43,7 @@ function App() {
           <Route path='/home' element={<Home />} />
           {/* <Route path='/chat' element={<Chat />} /> */}
           <Route path='/chats' element={<Chat user={user} conversation={conversation} setConversation={setConversation} />} />
+          <Route path='/editaccount' element={<Account user={user} />} />
 
 
         </Routes>

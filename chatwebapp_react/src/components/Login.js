@@ -3,7 +3,7 @@ import { Button, Form, FormFeedback, FormGroup, Input, Label } from "reactstrap"
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import userServices from "../services/userServices";
-
+import './Login.css'
 function Login({user, setUser}) {
 
     const [username, setUsername] = useState('')
@@ -23,6 +23,7 @@ function Login({user, setUser}) {
                 
                 
                 window.localStorage.setItem("token", res.data.token);
+             
                 setUser(res.data.user)
                 console.log(user._id)
                 navigate('/chats')
@@ -37,15 +38,16 @@ function Login({user, setUser}) {
     })
 
     return (
-        <div>
-            <p> Login Page</p>
+        <div className="login-container">
+            <span className="title">Login</span>
+          
 
             <Form onSubmit={handleLogin}>
                 <FormGroup>
-                    <Label for="username">
+                    <Label className="username" for="username">
                         Username
                     </Label>
-                    <Input
+                    <Input className="usernameInput"
                         id="username"
                         name="username"
                         placeholder="Enter username"
@@ -64,10 +66,10 @@ function Login({user, setUser}) {
 
 
                 <FormGroup>
-                    <Label for="password">
+                    <Label className="password" for="password">
                         Password
                     </Label>
-                    <Input
+                    <Input className="passwordInput"
                         id="password"
                         name="password"
                         placeholder="Enter password"
@@ -78,11 +80,20 @@ function Login({user, setUser}) {
 
 
                 </FormGroup>
-
-                <Button color="primary">
+                <div className="buttons">
+                <Button className="button" color="primary">
                     Login
 
                 </Button>
+
+                <Button onClick={()=>{navigate('/register')}} className="button" color="secondary">
+                    Register
+
+                </Button>
+
+                </div>
+
+               
 
             </Form>
         </div>

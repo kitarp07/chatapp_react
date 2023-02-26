@@ -1,0 +1,84 @@
+.r-container {
+    width: 500px;
+    height: 800px;
+    border: 20px;
+    opacity: 1;
+    offset-position: auto;
+    margin-left: 550px;
+    border-bottom: 1px rgb(47, 38, 38);
+    border-radius: 4px;
+    justify-content: center;
+    margin-bottom: 100px;
+    margin-top: 70px;
+    box-shadow: hsl(0, 10%, 60%) 0 0 3px;
+    
+    
+    
+}
+
+.title{
+    margin-left: 50px;
+    font-size: 20px;
+    margin-top: 20px;
+   
+}
+
+username{
+    margin-left: 50px;
+    margin-top: 30px;
+}
+#fname{
+    margin-left: 50px;
+    width: 300px;
+    margin-top: 10px;
+}
+
+.password{
+    margin-left: 50px;
+    margin-top: 10px;
+}
+.passwordInput{
+    margin-left: 50px;
+    width: 300px;
+    margin-top: 10px;
+}
+
+.buttons{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.button{
+    margin-left: 50px;
+    width: 100px;
+    margin-top: 30px;
+}
+
+#lname{
+    margin-left: 50px;
+    width: 300px;
+    margin-top: 10px;
+}
+#username{
+    margin-left: 50px;
+    width: 300px;
+    margin-top: 10px;
+}
+#password{
+    margin-left: 50px;
+    width: 300px;
+    margin-top: 10px;
+}
+#confirmpassword{
+    margin-left: 50px;
+    width: 300px;
+    margin-top: 10px;
+}
+
+#error{
+    margin-left: 50px;
+  
+    margin-top: 10px;
+}
+

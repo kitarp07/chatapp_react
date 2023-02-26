@@ -12,8 +12,10 @@ const register = (data) => {
 
 function getUser (id) {
     return axios.get(`${baseUrl}/${id}`)
-
-
 }
 
-export default {login, register, getUser};
+function getContacts(id){
+    return axios.get(`${baseUrl}/${id}/contacts`)
+}
+
+export default {login, register, getUser, getContacts};

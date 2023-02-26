@@ -1,84 +1,124 @@
-.main{
-    height: 90vh;
-    display: flex;
+::-webkit-scrollbar {
+    width: 3px;
 }
 
-.wrap{
-    flex:3;
-    display: flex;
-    flex-direction: column;
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
 }
-.convos{
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+.main {
+    display: flex;
+
+    height: 90vh;
+}
+
+.wrap {
+    display: flex;
+    flex: 3;
+    flex-direction: column;
+
+    
+}
+
+.convos {
     overflow-y: scroll;
+
     height: 100%;
 }
 
-.messagesWrap{
-    flex:6;
+.messagesWrap {
+    flex: 6;
+
+    
 }
 
-.messagesArea{
+.messagesArea {
+    position: relative;
+
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    position: relative;
-    
-
 }
 
-.messages{
-    height: 100%;
+.messages {
     overflow-y: scroll;
-    padding-right: 10px;
-    
 
+    height: 100%;
+    padding-right: 10px;
 }
-.addMessage{
-    margin-top: 5px;
+
+.addMessage {
     display: flex;
     align-items: center;
     justify-content: space-between;
-   
+
+    margin-top: 5px;
 }
 
-.sendMessage{
+.sendMessage {
     width: 80%;
     height: 90px;
     padding: 10px;
 }
 
-.msgSubmit{
+.msgSubmit {
     width: 70px;
-    height:40px;
+    height: 40px;
+
+    cursor: pointer;
+
+    color: white;
     border: none;
     border-radius: 5px;
-    cursor: pointer;background-color: red;
-    color: white;
+    background-color: red;
 }
 
-.profileWrap{
+.profileWrap {
     flex: 3;
+
+  
 }
 
-.convos,.messagesArea,.profile{
-    padding: 10px;
+.convos,
+.messagesArea,
+.profile {
     height: 100%;
+    padding: 10px;
+    margin-left: 30px;
+    
 }
 
 .searchInput {
     width: 90%;
     padding: 10px;
+
     border: none;
     border-bottom: 1px solid indigo;
 }
 
-.noMsgTxt{
+.noMsgTxt {
+    font-size: 20px;
+
     position: absolute;
     top: 10%;
-    font-size: 20px;
-    color: grey;
-    text-align: center;
-    cursor: default;
 
+    cursor: default;
+    text-align: center;
+
+    color: grey;
 }
 
+.allcontacts{
+    font-size: 22;
+    font-weight: 500;
+    margin-left: 50px;
+}
