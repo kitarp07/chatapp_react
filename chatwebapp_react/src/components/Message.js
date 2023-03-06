@@ -1,6 +1,7 @@
 import "./Message.css";
 import { format } from "timeago.js"
 import { useEffect, useInsertionEffect, useState } from "react";
+import MessageTopbar from "./MsgTopBar";
 
 function Message({ message, sent }) {
 
@@ -23,8 +24,10 @@ function Message({ message, sent }) {
 
 
     return (
+        
 
         <div>
+            
             {
                 IsMessage ? <>
 

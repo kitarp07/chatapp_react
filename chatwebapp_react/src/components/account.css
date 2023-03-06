@@ -1,24 +1,23 @@
 .edit-container {
-    width: 900px;
-    height: 600px;
+    width: 800px;
+    height: 500px;
     border: 20px;
     opacity: 1;
     offset-position: auto;
-    margin-left: 20%;
+    margin-left: 25%;
     border-bottom: 1px rgb(47, 38, 38);
     border-radius: 4px;
     justify-content: center;
     margin-bottom: 100px;
-    margin-top: 20px;
+    margin-top: 50px;
     box-shadow: hsl(0, 10%, 60%) 0 0 3px;
     display: flex;
 
 }
 .fdiv{
     flex: 1.5;
+    box-shadow: hsl(0, 10%, 60%) 0 0 1px;
     
-
-    background-color: red;
 }
 .imgContainer{
     width: 180px;
@@ -36,19 +35,31 @@
 .img{
     width: 180px;
     height: 180px;
+    
     border-radius: 50%;
+
+}
+.img1{
+    width: 40px;
+    height: 40px;
+    margin-left: 210px;
+    margin-top: -60px;
+    border-radius: 50%;
+    padding: 5px;
+    cursor: pointer;
 
 }
 
 .editForm{
-    flex: 2.5;
-    background-color: green;
+    flex: 2.3;
+    margin-left: 50px;
+    box-shadow: hsl(0, 10%, 60%) 0 0 0px;
+    
 }
 
 .f1{
-    display: flex;
-    align-items: stretch;
-    background-color: black;
+    
+    background-color: white;
 }
 
 .f1a{
@@ -70,24 +81,29 @@
 .title{
     margin-left: 50px;
     font-size: 20px;
+    font-weight: 500;
     margin-top: 20px;
    
 }
 
 .adetails1{
-    margin-left: 120px;
-    margin-top: 10px;
+    margin-left: 110px;
+    margin-top: 0px;
+    font-size: 18px;
+    font-weight: 500;
    
 
 }
 .adetails2{
-    margin-left: 120px;
+    margin-left: 90px;
+    font-size: 16px;
+    font-weight: 400;
    
 }
 
-.username{
+.eusername{
     margin-left: 50px;
-    margin-top: 30px;
+    margin-top: 20px;
 }
 .usernameInput{
     margin-left: 50px;
@@ -95,7 +111,7 @@
     margin-top: 10px;
 }
 
-.password{
+.epassword{
     margin-left: 50px;
     margin-top: 10px;
 }

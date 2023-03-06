@@ -23,7 +23,7 @@
 .msgText{
     padding: 10px;
     border-radius: 10px;
-    background-color: rgb(53, 10, 10);
+    background-color: #006AFF;
     color: white;
     max-width: 300px;
 
@@ -35,5 +35,5 @@
 }
 
 .message.sent .msgText{
-    background: rgba(172, 172, 181, 0.275);
+    background: hwb(215 0% 0%);
 }

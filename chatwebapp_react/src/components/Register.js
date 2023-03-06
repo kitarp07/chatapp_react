@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { Button, Form, FormFeedback, FormGroup, Input, Label } from "reactstrap";
 import userServices from '../services/userServices';
+import Nav from './Nav';
 import "./Registration.css"
 
 const Register = () => {
@@ -17,20 +18,21 @@ const Register = () => {
     const [valid, setValid] = useState('')
     const [lengthValid, setLengthValid] = useState('')
     const [lengthMessage, setLengthMessage] = useState('')
+    const[image, setImage] = useState([]);
 
     const navigate = useNavigate()
 
 
     const handleRegister = (e) => {
         e.preventDefault()
-        console.log(username, password, confirmpassword)
-
-        userServices.register({ fname, lname, username, password }).then(res => {
+     
+        userServices.register({ fname, lname, username, password,image }).then(res => {
             console.log(res.data)
+            window.alert(res.data.status)
             navigate('/login')
 
         })
-            .catch(err => console.log(err))
+            .catch(err => window.alert(err.response.data.err))
 
     }
 
@@ -54,11 +56,11 @@ const Register = () => {
     useEffect(() => {
         if (password !== confirmpassword) {
             setValid('is-invalid')
-            setMessage(' It doesnot work')
+            setMessage(' Password doesnot match')
             return
         }
         setValid('is-valid')
-        setMessage('Works')
+        setMessage('Password matches')
 
 
     }, [confirmpassword, password])
@@ -70,7 +72,7 @@ const Register = () => {
             return
         }
         setLengthValid('is-valid')
-        setLengthMessage('Works')
+        setLengthMessage('')
 
 
 
@@ -79,116 +81,158 @@ const Register = () => {
 
 
     return (
-        <><div className='r-container'>
-            <span className='title'> Register</span>
+        <>
+        <Nav/>
+        <div className='r-container'>
+            <div className='rr'></div>
+            <div className='rtitle'> Register</div>
+            
+
+
 
             <Form>
-                <FormGroup>
-                    <Label className='username' for="fname">
-                        First Name
-                    </Label>
-                    <Input className={lengthValid}
-                        id="fname"
-                        name="fname"
-                        placeholder="Enter first name"
-                        type="text"
-                        onChange={(e) => setfName(e.target.value)}
-                    />
+                <div className='r1'>
+                    <div className='r1a'>
 
-                    <FormFeedback id='error'>
-                        {
-                            lengthMessage
+                        <FormGroup>
+                            <Label className='username' for="fname">
+                                First Name
+                            </Label>
+                            <Input 
+                                id="fname"
+                                name="fname"
+                                placeholder="Enter first name"
+                                type="text"
+                                onChange={(e) => setfName(e.target.value)}
+                            />
 
-                        }
-                    </FormFeedback>
-                </FormGroup>
-                <FormGroup>
-                    <Label className='password'for="lname">
-                        Last name
-                    </Label>
-                    <Input className={lengthValid}
-                        id="lname"
-                        name="lname"
-                        placeholder="Enter last name"
-                        type="text"
-                        onChange={(e) => setlName(e.target.value)}
-                    />
+                           
+                        </FormGroup>
+                    </div>
+                    <div className='r1b'>
+                        <FormGroup>
+                            <Label className='username' for="lname">
+                                Last name
+                            </Label>
+                            <Input 
+                                id="lname"
+                                name="lname"
+                                placeholder="Enter last name"
+                                type="text"
+                                onChange={(e) => setlName(e.target.value)}
+                            />
 
-                    <FormFeedback id='error'>
-                        {
-                            lengthMessage
+                            
+                        </FormGroup>
 
-                        }
-                    </FormFeedback>
-                </FormGroup>
-                <FormGroup>
-                    <Label className='password'for="username">
-                        Username
-                    </Label>
-                    <Input className={lengthValid}
-                        id="username"
-                        name="username"
-                        placeholder="Enter username"
-                        type="text"
-                        onChange={(e) => setUsername(e.target.value)}
-                    />
+                    </div>
+                </div>
 
-                    <FormFeedback id='error'>
-                        {
-                            lengthMessage
+                <div className='r2'>
+                    <div className='r2a'>
+                        <FormGroup>
+                            <Label className='password' for="username">
+                                Username
+                            </Label>
+                            <Input className={lengthValid}
+                                id="username"
+                                name="username"
+                                placeholder="Enter username"
+                                type="text"
+                                onChange={(e) => setUsername(e.target.value)}
+                            />
 
-                        }
-                    </FormFeedback>
-                </FormGroup>
+                            <FormFeedback id='error'>
+                                {
+                                    lengthMessage
+
+                                }
+                            </FormFeedback>
+                        </FormGroup>
+
+                    </div>
+                    <div className='r2b'>
+                    <FormGroup>
+                            <Label className='password' for="password">
+                                Image
+                            </Label>
+                            <Input
+                                id="password"
+                                name="password"
+                                placeholder="Enter password"
+                                type="file"
+                                onChange={(e) => setImage(e.target.files[0])}
+                            />
 
 
-                <FormGroup>
-                    <Label className='password'for="password">
-                        Password
-                    </Label>
-                    <Input
-                        id="password"
-                        name="password"
-                        placeholder="Enter password"
-                        type="password"
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
+                        </FormGroup>
+
+                    </div>
+                </div>
+                <div className='r3'>
+
+                    <div className='r3a'>
+                        <FormGroup>
+                            <Label className='password' for="password">
+                                Password
+                            </Label>
+                            <Input
+                                id="password"
+                                name="password"
+                                placeholder="Enter password"
+                                type="password"
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
 
 
-                </FormGroup>
+                        </FormGroup>
 
-                <FormGroup>
-                    <Label className='password'for="confirm password">
-                        Confirm Password
-                    </Label>
-                    <Input className={valid}
-                        id="confirmpassword"
-                        name="confirmpassword"
-                        placeholder="Enter password again"
-                        type="password"
-                        onChange={(e) => setConfirmPassword(e.target.value)}
-                    />
+                    </div>
+                    <div className='r3b'>
+                        <FormGroup>
+                            <Label className='password' for="confirm password">
+                                Confirm Password
+                            </Label>
+                            <Input className={valid}
+                                id="confirmpassword"
+                                name="confirmpassword"
+                                placeholder="Enter password again"
+                                type="password"
+                                onChange={(e) => setConfirmPassword(e.target.value)}
+                            />
 
-                    <FormFeedback id='error'>
+                            <FormFeedback id='error'>
 
-                        {message}
+                                {message}
 
-                    </FormFeedback>
-                </FormGroup>
+                            </FormFeedback>
+                        </FormGroup>
+
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
                 <div className='buttons'>
-                <Button className='button' color="primary"  >
-                    Cancel
+                    <Button onClick={()=>{navigate('/login')}} className='button' color="success"  >
+                        Cancel
 
-                </Button>
-                <Button className='button' color="secondary" onClick={handleRegister} >
-                    Register
+                    </Button>
+                    <Button className='button' color="primary" onClick={handleRegister} >
+                        Register
 
-                </Button>
+                    </Button>
 
-                
+
 
                 </div>
-                
+
 
             </Form>
         </div>

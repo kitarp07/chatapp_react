@@ -1,5 +1,5 @@
 .details{
-    margin-top: 30px;
+    margin-top: 20px;
     display: flex;
     align-items: center;
     font-weight: 500;
@@ -21,5 +21,10 @@
 .title{
     font-size: 18px;
     
+   
+}
+
+.profile{
+    margin-left: 30px;
    
 }

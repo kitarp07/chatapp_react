@@ -4,12 +4,13 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import userServices from "../services/userServices";
 import './Login.css'
-function Login({user, setUser}) {
+import Nav from "./Nav";
+function Login({ user, setUser }) {
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
-    
+
 
     const [lengthValid, setValid] = useState('')
     const [lengthMessage, setMessage] = useState('')
@@ -20,16 +21,20 @@ function Login({user, setUser}) {
         userServices.login({ username, password })
             .then((res) => {
                 console.log(res.data)
-                
-                
+
+
                 window.localStorage.setItem("token", res.data.token);
-             
+                window.localStorage.removeItem("uid");
+                window.localStorage.setItem("uid", res.data.userID);
+
                 setUser(res.data.user)
-                console.log(user._id)
+                console.log(window.localStorage.getItem("uid"))
+
+
                 navigate('/chats')
-                
-            
-            }).catch((err) => window.alert(err.response.data.err));
+
+
+            }).catch((err) => window.alert(err.response.data.msg));
 
     };
 
@@ -38,65 +43,74 @@ function Login({user, setUser}) {
     })
 
     return (
-        <div className="login-container">
-            <span className="title">Login</span>
-          
+        <>
+        <Nav/>
 
-            <Form onSubmit={handleLogin}>
-                <FormGroup>
-                    <Label className="username" for="username">
-                        Username
-                    </Label>
-                    <Input className="usernameInput"
-                        id="username"
-                        name="username"
-                        placeholder="Enter username"
-                        type="text"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                    />
+            <div className="login-container">
+                <div className="l1">
 
-                    {/* <FormFeedback>
+                </div>
+                <div className="ltitle">Login</div>
+               
+
+               
+
+                <Form onSubmit={handleLogin}>
+                    <FormGroup>
+                        <Label className="username" for="username">
+                            Username
+                        </Label>
+                        <Input className="usernameInput"
+                            id="username"
+                            name="username"
+                            placeholder="Enter username"
+                            type="text"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                        />
+
+                        {/* <FormFeedback>
                         {
                             lengthMessage
 
                         }
                     </FormFeedback> */}
-                </FormGroup>
+                    </FormGroup>
 
 
-                <FormGroup>
-                    <Label className="password" for="password">
-                        Password
-                    </Label>
-                    <Input className="passwordInput"
-                        id="password"
-                        name="password"
-                        placeholder="Enter password"
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
+                    <FormGroup>
+                        <Label className="password" for="password">
+                            Password
+                        </Label>
+                        <Input className="passwordInput"
+                            id="password"
+                            name="password"
+                            placeholder="Enter password"
+                            type="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
 
 
-                </FormGroup>
-                <div className="buttons">
-                <Button className="button" color="primary">
-                    Login
+                    </FormGroup>
+                    <div className="lbuttons">
+                        <Button className="button" color="primary">
+                            Login
 
-                </Button>
+                        </Button>
 
-                <Button onClick={()=>{navigate('/register')}} className="button" color="secondary">
-                    Register
+                        <Button onClick={() => { navigate('/register') }} className="button" color="secondary">
+                            Register
 
-                </Button>
+                        </Button>
 
-                </div>
+                    </div>
 
-               
 
-            </Form>
-        </div>
+
+                </Form>
+            </div>
+        </>
     )
 }
 

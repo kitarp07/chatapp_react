@@ -8,6 +8,8 @@ import Conversation from "./Conversations";
 import "./Chat.css"
 import { io } from "socket.io-client";
 import Profile from "./profile";
+import MessageTopbar from "./MsgTopBar";
+import Navbar from "./Navbar";
 
 function Chat({ user, conversation, setConversation }) {
     const [messages, setMessages] = useState("")
@@ -143,18 +145,30 @@ function Chat({ user, conversation, setConversation }) {
     }
 
     const createChat = async (senderId, receiverId) => {
-      
-        
 
-        try {
-            const res = await chatServices.createChat({ senderId, receiverId });
-            console.log(res)
-            setConversation([...conversation, res.data])
-            console.log(conversation)
-            setCurrentChat(res.data)
-        } catch (error) {
-            console.log(error)
-        }
+
+
+        // try {
+        //     const res = await chatServices.createChat(senderId,receiverId, { senderId, receiverId });
+        //     console.log(res)
+        //     setConversation([...conversation, res.data])
+        //     console.log(conversation)
+        //     setCurrentChat(res.data)
+        // } catch (err) {
+        //     window.alert(err.response.data.err);
+        // }
+
+        chatServices.createChat(senderId, receiverId, { senderId, receiverId })
+            .then((res) => {
+                console.log(res)
+
+
+                setConversation([...conversation, res.data])
+                console.log(conversation)
+                setCurrentChat(res.data)
+
+
+            }).catch((err) => { console.log(err); window.alert(err.response.data.msg) });
     }
 
 
@@ -166,78 +180,84 @@ function Chat({ user, conversation, setConversation }) {
     }, [messages])
 
     return (
-        <div className="main">
+        <>
 
-            <div className="wrap">
-                <div className="convos">
+            <Navbar />
+            <div className="main">
 
-                    <input placeholder="Search.." className="searchInput" />
+                <div className="wrap">
+                    <div className="convos">
 
-                    {conversation.map((c) => (
-                        <div onClick={() => setCurrentChat(c)}>
+                        <input placeholder="Search.." className="searchInput" />
 
-                            <Conversation conversation={c} currentUser={user} />
-                        </div>
+                        {conversation.map((c) => (
+                            <div onClick={() => setCurrentChat(c)}>
 
-                    ))}
-                </div>
-
-            </div>
-            <div className="messagesWrap">
-                <div className="messagesArea">
-                    {
-                        isChat ? <>
-                            <div className="messages">
-
-
-
-                                {
-
-                                    messages.map((m) => (
-                                        <div ref={scrollRef}>
-                                            <Message message={m} sent={m?.sender === user._id} />
-                                        </div>
-
-
-                                    ))
-                                }
-
-
-
-
-
-
-                            </div>
-                            <div className="addMessage">
-                                <textarea className="sendMessage" placeholder="Send a message" value={newMessage} onChange={(e) => setNewMessage(e.target.value)}> </textarea>
-                                <button className="msgSubmit" onClick={handleSubmit}>Submit</button>
+                                <Conversation conversation={c} currentUser={user} />
                             </div>
 
-                        </> :
-                            <span className="noMsgTxt">Open a conversation to start a chat</span>}
+                        ))}
+                    </div>
 
                 </div>
-            </div>
-            <div className="profileWrap">
-                <div className="profile">
-                    <span className="allcontacts"> All contacts </span>
-                    {contacts.map((c) => (
+                <div className="messagesWrap">
+                    <div className="messagesArea">
+                        {
+                            isChat ? <>
+                                <div className="messages">
+                                    <MessageTopbar conversation={currentChat} currentUser={user} />
 
 
-                        <div onClick={async () => createChat(user._id, c._id)}>
 
-                            <Profile contact={c} />
-                        </div>
 
-                    ))}
+                                    {
+                                        messages.map((m) => (
+                                            <div ref={scrollRef}>
+
+                                                <Message message={m} sent={m?.sender === user._id} />
+                                            </div>
+
+
+                                        ))
+                                    }
+
+
+
+
+
+
+                                </div>
+                                <div className="addMessage">
+                                    <textarea className="sendMessage" placeholder="Send a message" value={newMessage} onChange={(e) => setNewMessage(e.target.value)}> </textarea>
+                                    <button className="msgSubmit" class = 'btn btn-primary' onClick={handleSubmit}>Submit</button>
+                                </div>
+
+                            </> :
+                                <span className="noMsgTxt">Open a conversation to start a chat</span>}
+
+                    </div>
+                </div>
+                <div className="profileWrap">
+                    <div className="profile">
+                        <span className="allcontacts"> All contacts </span>
+                        {contacts.map((c) => (
+
+
+                            <div onClick={async () => createChat(user._id, c._id)}>
+
+                                <Profile contact={c} />
+                            </div>
+
+                        ))}
+
+                    </div>
 
                 </div>
 
-            </div>
 
 
-
-        </div >
+            </div >
+        </>
     )
 }
 

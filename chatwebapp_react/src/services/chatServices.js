@@ -17,8 +17,8 @@ function getMessagesByChatId(chatId) {
     return axios.get(`${messageUrl}/${chatId}`)
 }
 
-function createChat(data){
-    return axios.post(`${baseUrl}/`, data)
+function createChat(uId, fId,data){
+    return axios.post(`${baseUrl}/${uId}/${fId}`, data)
 
 }
 
@@ -26,4 +26,7 @@ function addMessage(data){
     return axios.post(`${messageUrl}`, data)
 }
 
-export default {getConversation, getMessagesByChatId, addMessage, createChat};
+function deleteChat(id){
+    return axios.delete(`${baseUrl}/${id}`)
+}
+export default {getConversation, getMessagesByChatId, addMessage, createChat, deleteChat};

@@ -15,11 +15,14 @@
     
     
 }
-
-.title{
+.l1{
+    height: 0.1px;
+}
+.ltitle{
     margin-left: 50px;
     font-size: 20px;
-    margin-top: 20px;
+    margin-top: 14px;
+    
    
 }
 
@@ -43,9 +46,10 @@
     margin-top: 10px;
 }
 
-.buttons{
+.lbuttons{
     display: flex;
     flex-direction: row;
+    margin-left: 25px;
 }
 
 .button{
