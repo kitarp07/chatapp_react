@@ -30,6 +30,8 @@ export default function Navbar() {
         }).catch(err => window.alert(err.response.data.err))
 
     }
+
+
     useEffect(() => {
         const uid = (window.localStorage.getItem("uid"))
         console.log(uid)
