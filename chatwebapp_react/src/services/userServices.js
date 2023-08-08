@@ -7,6 +7,8 @@ const login = (credentials) => {
 }
 
 const register = (data) => {
+   
+   
     const formData = new FormData();
     formData.append("fname", data.fname)
     formData.append("lname", data.lname)
